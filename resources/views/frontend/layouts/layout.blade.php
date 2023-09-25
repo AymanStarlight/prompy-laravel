@@ -9,7 +9,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head> 
-<body>
+<body class="bg-gradient-to-r main_gradient">
     
     <main class="app">
         <livewire:nav-bar>

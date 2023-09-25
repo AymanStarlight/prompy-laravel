@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index() {
-        return view('frontend.layouts.home.home');
+    public function home() {
+        return view('frontend.home.home');
+    }
+
+    public function create() {
+        return view('frontend.create.create');
     }
 }

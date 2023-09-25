@@ -10,9 +10,11 @@
         @auth
 
             <div class="flex gap-3 md:gap-5">
-                <a href="#" class="blue_btn">
-                    Create Post
-                </a>
+                <div>
+                    <a href={{ route('create.index') }} class="blue_btn">
+                        Create Post
+                    </a>
+                </div>
 
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -45,7 +47,7 @@
             <div class="flex">
 
                 <img src={{ asset('storage/assets/images/profile_pics/' . auth()->user()->profile_img) }}
-                    class="rounded-full object-fill w-[37px] h-[37px]" alt="profile"
+                    class="rounded-full object-fill w-[42px] h-[42px]" alt="profile"
                     wire:click="toggleDropDown" />
 
                 @if ($dropDown)

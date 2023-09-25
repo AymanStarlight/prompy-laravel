@@ -23,8 +23,12 @@
 
 /* Tailwind Styles */
 
+.main_gradient {
+	@apply bg-gradient-to-r from-[#f3e7e9] via-[#e3eeff] to-[#e3eeff]
+}
+
 .app {
-	@apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+	@apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6 ;
 }
 
 .blue_btn {
@@ -32,7 +36,7 @@
 }
 
 .outline_btn {
-	@apply rounded-md border border-primary-blue bg-transparent py-1.5 px-5 text-black transition-all hover:bg-primary-red hover:border-secondary-blue hover:text-white text-center text-sm font-inter flex items-center justify-center;
+	@apply rounded-md border border-primary-blue bg-transparent py-1.5 px-5 text-black transition-all hover:bg-primary-red hover:border-gray-400 hover:text-white text-center text-sm font-inter flex items-center justify-center;
 }
 
 .head_text {
@@ -82,11 +86,11 @@
 
 /* Form Component */
 .form_textarea {
-	@apply w-full flex rounded-lg h-[200px] mt-2 p-3 text-sm text-gray-500 outline-0;
+	@apply w-full flex rounded-lg h-[200px] mt-2 p-3 text-sm text-gray-500 outline-0 border-0 focus:ring-0;
 }
 
 .form_input {
-	@apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0;
+	@apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 border-0 focus:ring-0;	
 }
 
 /* Nav Component */
