@@ -12,4 +12,5 @@
             Discover, Create and share the best prompts.
         </p>
     </section>
+    <livewire:feed>
 @endsection
