@@ -22,7 +22,7 @@
                     <button type="submit" class="outline_btn">Sign Out</button>
                 </form>
 
-                <a href="#">
+                <a href={{ route('profile.index') }}>
                     <img src={{ asset('storage/assets/images/profile_pics/' . auth()->user()->profile_img) }}
                         class="rounded-full object-fill w-[37px] h-[37px]" alt="profile" />
                 </a>

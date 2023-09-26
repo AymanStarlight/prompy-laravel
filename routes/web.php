@@ -27,9 +27,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    // Pages
     Route::get('/create', [HomeController::class, 'create'])->name('create.index');
+    Route::get('/myprofile', [HomeController::class, 'profile'])->name('profile.index');
     // Prompt
     Route::post('/prompt/create', [PromptController::class, 'store'])->name('prompt.store');
+    Route::get('/prompt/edit/{prompt}', [PromptController::class, 'edit'])->name('prompt.edit');
+    Route::put('/prompt/update/{prompt}', [PromptController::class, 'update'])->name('prompt.update');
+    Route::delete('/prompt/delete/{prompt}', [PromptController::class, 'delete'])->name('prompt.delete');
 
 });
 

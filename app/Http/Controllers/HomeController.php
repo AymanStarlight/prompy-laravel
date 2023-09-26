@@ -14,4 +14,8 @@ class HomeController extends Controller
     public function create() {
         return view('frontend.create.create');
     }
+
+    public function profile() {
+        return view('frontend.profile.profile');
+    }
 }

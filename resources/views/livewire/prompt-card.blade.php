@@ -14,8 +14,7 @@
             </div>
         </div>
         <div class="copy_btn" onclick="copyToClipboard('{{ $prompt->prompt }}')">
-            <img  src={{ asset('storage/assets/icons/copy.svg') }}
-                width="16" height="16" alt="copy_icon" />
+            <img src={{ asset('storage/assets/icons/copy.svg') }} width="16" height="16" alt="copy_icon" />
         </div>
 
     </div>
@@ -23,6 +22,23 @@
     <p class="font-inter text-sm blue_gradient cursor-pointer">
         #{{ $prompt->tag }}
     </p>
+    @auth
+        @if (auth()->user()->id === $prompt->user_id and str_contains(url()->current(), 'myprofile'))
+            <div class="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
+                <a href={{ route('prompt.edit', $prompt->id) }} class="font-inter text-sm green_gradient cursor-pointer">
+                    Edit
+                </a>
+                <form method="POST" action={{ route('prompt.delete', $prompt->id) }}>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="font-inter text-sm orange_gradient cursor-pointer">
+                        Delete
+                    </button>
+                </form>
+            </div>
+        @endif
+    @endauth
+
     <script>
         function copyToClipboard(content) {
             navigator.clipboard.writeText(content);

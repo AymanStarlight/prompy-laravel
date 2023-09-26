@@ -20,4 +20,27 @@ class PromptController extends Controller
         return redirect()->route('home.index')->with('success', 'Prompt Created Successfuly');
 
     }
+
+    public function edit(Prompt $prompt) {
+        return view('frontend.profile.pages.edit', compact('prompt'));
+    }
+
+    public function update(Request $request,Prompt $prompt) {
+        $data = [
+            'prompt' => $request->prompt,
+            'tag' => $request->tag,
+        ];
+
+        $prompt->update($data);
+
+        return redirect()->route('profile.index')->with('success', 'Prompt Updated Successfuly');
+    }
+
+    public function delete(Prompt $prompt) {
+
+        $prompt->delete();
+
+        return back()->with('error', 'Prompt Deleted Successfuly');
+    }
+
 }
