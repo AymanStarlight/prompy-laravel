@@ -16,7 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'home'])->name('home.index');
+Route::get('/prompts/{tag?}', [HomeController::class, 'home'])->name('home.index');
+
+Route::get('/', function () {
+    return redirect()->route('home.index');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
