@@ -52,10 +52,10 @@
 
                 @if ($dropDown)
                     <div class="dropdown">
-                        <a href="#" class="dropdown_link" wire:click="closeDropDown">
+                        <a href={{ route('profile.index') }} class="dropdown_link" wire:click="closeDropDown">
                             My Profile
                         </a>
-                        <a href="#" class="dropdown_link" wire:click="closeDropDown">
+                        <a href={{ route('create.index') }} class="dropdown_link" wire:click="closeDropDown">
                             Create Prompt
                         </a>
                         <form method="POST" action="{{ route('logout') }}">

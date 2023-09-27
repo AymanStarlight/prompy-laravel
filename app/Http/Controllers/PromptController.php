@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class PromptController extends Controller
 {
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
         $data = [
             'user_id' => auth()->user()->id,
@@ -21,11 +22,18 @@ class PromptController extends Controller
 
     }
 
-    public function edit(Prompt $prompt) {
+    public function edit(Prompt $prompt)
+    {
         return view('frontend.profile.pages.edit', compact('prompt'));
     }
 
-    public function update(Request $request,Prompt $prompt) {
+    public function update(Request $request, Prompt $prompt)
+    {
+
+        if (auth()->user()->id !== $prompt->user->id) {
+            return redirect()->route('home.index')->with('error', "You can't edit a Prompt that's not yours!!!");
+        }
+
         $data = [
             'prompt' => $request->prompt,
             'tag' => $request->tag,
@@ -36,7 +44,8 @@ class PromptController extends Controller
         return redirect()->route('profile.index')->with('success', 'Prompt Updated Successfuly');
     }
 
-    public function delete(Prompt $prompt) {
+    public function delete(Prompt $prompt)
+    {
 
         $prompt->delete();
 

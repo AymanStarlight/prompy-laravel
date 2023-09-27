@@ -13,8 +13,9 @@
                 </p>
             </div>
         </div>
-        <div class="copy_btn" onclick="copyToClipboard('{{ $prompt->prompt }}')">
-            <img src={{ asset('storage/assets/icons/copy.svg') }} width="16" height="16" alt="copy_icon" />
+        <div class="copy_btn" onclick="copyToClipboard('{{ $prompt->id }}', '{{ $prompt->prompt }}')">
+            <img id={{ "copied" . $prompt->id }} src="{{ asset('storage/assets/icons/copy.svg') }}" width="16" height="16"
+                 />
         </div>
 
     </div>
@@ -38,11 +39,14 @@
             </div>
         @endif
     @endauth
-
-    <script>
-        function copyToClipboard(content) {
-            navigator.clipboard.writeText(content);
-            alert(content)
-        }
-    </script>
 </div>
+
+<script>
+    function copyToClipboard(id, content) {
+        navigator.clipboard.writeText(content);
+        document.getElementById(`copied${id}`).src = "{{ asset('storage/assets/icons/tick.svg') }}"
+        setTimeout(() => {
+            document.getElementById(`copied${id}`).src = "{{ asset('storage/assets/icons/copy.svg') }}"
+        }, 1700);
+    }
+</script>
