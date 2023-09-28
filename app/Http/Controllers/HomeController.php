@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Prompt;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -31,5 +32,14 @@ class HomeController extends Controller
     public function profile()
     {
         return view('frontend.profile.profile');
+    }
+
+    public function profiles(User $user) {
+
+        if((auth()->user()) && (auth()->user()->id === $user->id)) {
+            return redirect()->route('profile.index');
+        }
+
+        return view('frontend.profiles.profiles', compact('user'));
     }
 }

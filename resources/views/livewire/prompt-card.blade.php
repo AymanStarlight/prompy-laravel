@@ -1,21 +1,23 @@
 <div wire:key='{{ $prompt->id }}' class="prompt_card">
     <div class="flex justify-between items-start gap-5">
 
-        <div class="flex-1 flex justify-start items-center gap-3 cursor-pointer">
-            <img class="rounded-full object-fill w-[40px] h-[40px]"
-                src={{ asset('storage/assets/images/profile_pics/' . $prompt->user->profile_img) }} alt="user_img">
-            <div class="flex flex-col">
-                <h3 class="font-satoshi font-semibold text-gray-900">
-                    {{ $prompt->user->name }}
-                </h3>
-                <p class="font-inter text-sm text-gray-500">
-                    {{ $prompt->user->email }}
-                </p>
+        <a href={{ route('profiles.index', $prompt->user->id) }}>
+            <div class="flex-1 flex justify-start items-center gap-3 cursor-pointer">
+                <img class="rounded-full object-fill w-[40px] h-[40px]"
+                    src={{ asset('storage/assets/images/profile_pics/' . $prompt->user->profile_img) }} alt="user_img">
+                <div class="flex flex-col">
+                    <h3 class="font-satoshi font-semibold text-gray-900">
+                        {{ $prompt->user->name }}
+                    </h3>
+                    <p class="font-inter text-sm text-gray-500">
+                        {{ $prompt->user->email }}
+                    </p>
+                </div>
             </div>
-        </div>
+        </a>
         <div class="copy_btn" onclick="copyToClipboard('{{ $prompt->id }}', '{{ $prompt->prompt }}')">
-            <img id={{ "copied" . $prompt->id }} src="{{ asset('storage/assets/icons/copy.svg') }}" width="16" height="16"
-                 />
+            <img id={{ 'copied' . $prompt->id }} src="{{ asset('storage/assets/icons/copy.svg') }}" width="16"
+                height="16" />
         </div>
 
     </div>
