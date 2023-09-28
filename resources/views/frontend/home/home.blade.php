@@ -14,6 +14,9 @@
             </p>
         </section>
         <section class="feed">
+            @if ($tag)
+                <a class="green_gradient" href={{ route('home.index') }}>All Prompts</a>
+            @endif
             <div class="mt-10 prompt_layout">
                 @foreach ($prompts as $prompt)
                     <livewire:prompt-card :prompt='$prompt'>

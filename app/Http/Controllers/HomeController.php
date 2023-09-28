@@ -20,7 +20,7 @@ class HomeController extends Controller
         } else {
             $prompts = Prompt::all();
         }
-        return view('frontend.home.home', compact('prompts'));
+        return view('frontend.home.home', compact('prompts', 'tag'));
     }
 
     public function create()

@@ -13,7 +13,7 @@ class PromptController extends Controller
         $data = [
             'user_id' => auth()->user()->id,
             'prompt' => $request->prompt,
-            'tag' => $request->tag
+            'tag' => strtolower($request->tag),
         ];
 
         Prompt::create($data);
@@ -36,7 +36,7 @@ class PromptController extends Controller
 
         $data = [
             'prompt' => $request->prompt,
-            'tag' => $request->tag,
+            'tag' => strtolower($request->tag),
         ];
 
         $prompt->update($data);
