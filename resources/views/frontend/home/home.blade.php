@@ -14,9 +14,9 @@
             </p>
         </section>
         <section class="feed">
-            <form class="relative w-full flex-center">
-                <input type="search" name="search" value="{{ request('search') }}" class="search_input peer"
-                    placeholder="Search for tags or prompts" id="search" autofocus/>
+            <form class="relative w-full flex-center" id="searchForm">
+                <input type="text" name="search" value="{{ request('search') }}" class="search_input peer"
+                    placeholder="Search for tags or prompts" id="search" onkeyup="resetTimeout()" />
             </form>
             @if ($tag)
                 <a class="green_gradient mt-8" href={{ route('home.index') }}>All Prompts</a>
@@ -31,11 +31,31 @@
 
     <script>
         const input = document.getElementById('search');
+        const form = document.getElementById('searchForm');
 
         // Set the cursor position to the end of the input value
         input.setSelectionRange(input.value.length, input.value.length);
 
         // Automatically focus the input
         input.focus();
+
+
+        let timeoutId;
+
+        function startTimeout() {
+            // Set a timeout of 5 seconds (5000 milliseconds)
+            timeoutId = setTimeout(() => {
+                form.submit()
+            }, 600);
+        }
+
+        function resetTimeout() {
+            // Clear the existing timeout
+            clearTimeout(timeoutId);
+
+            // Start a new timeout
+            startTimeout();
+        }
+
     </script>
 @endsection

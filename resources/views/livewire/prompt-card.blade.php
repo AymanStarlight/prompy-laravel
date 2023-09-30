@@ -3,7 +3,7 @@
 
         <a href={{ route('profiles.index', $prompt->user->id) }}>
             <div class="flex-1 flex justify-start items-center gap-3 cursor-pointer">
-                <img class="rounded-full object-fill w-[40px] h-[40px]"
+                <img class="rounded-full object-cover object-top w-[40px] h-[40px]"
                     src={{ asset('storage/assets/images/profile_pics/' . $prompt->user->profile_img) }} alt="user_img">
                 <div class="flex flex-col">
                     <h3 class="font-satoshi font-semibold text-gray-900">

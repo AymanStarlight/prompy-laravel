@@ -10,10 +10,12 @@ class PromptController extends Controller
     public function store(Request $request)
     {
 
+        $tag = explode(' ', $request->tag);
+
         $data = [
             'user_id' => auth()->user()->id,
             'prompt' => $request->prompt,
-            'tag' => strtolower($request->tag),
+            'tag' => strtolower($tag[0]),
         ];
 
         Prompt::create($data);
@@ -34,9 +36,11 @@ class PromptController extends Controller
             return redirect()->route('home.index')->with('error', "You can't edit a Prompt that's not yours!!!");
         }
 
+        $tag = explode(' ', $request->tag);
+
         $data = [
             'prompt' => $request->prompt,
-            'tag' => strtolower($request->tag),
+            'tag' => strtolower(str_replace([',', '#'], '', $tag[0])),
         ];
 
         $prompt->update($data);
