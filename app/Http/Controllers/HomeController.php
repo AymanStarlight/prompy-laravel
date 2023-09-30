@@ -8,22 +8,23 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function home($tag = null)
+    public function home()
     {
-        if ($tag) {
-            $ps = Prompt::where('tag', $tag)->get()->first();
-            if ($ps) {
-                $prompts = Prompt::where('tag', $tag)->get();
-            } else {
-                $prompts = Prompt::all();
-                return redirect()->route('home.index')->with('warning', 'Tag not Found');
-            }
-        } elseif (request('search')) {
+        // if ($tag) {
+        //     $ps = Prompt::where('tag', $tag)->get()->first();
+        //     if ($ps) {
+        //         $prompts = Prompt::where('tag', $tag)->get();
+        //     } else {
+        //         $prompts = Prompt::all();
+        //         return redirect()->route('home.index')->with('warning', 'Tag not Found');
+        //     }
+        // } 
+        if (request('search')) {
             $prompts = Prompt::where('tag', 'like', '%' . request('search') . '%')->orwhere('prompt', 'like', '%' . request('search') . '%')->get();
         } else {
             $prompts = Prompt::all();
         }
-        return view('frontend.home.home', compact('prompts', 'tag'));
+        return view('frontend.home.home', compact('prompts'));
     }
 
     public function create()

@@ -22,7 +22,7 @@
 
     </div>
     <p class="my-4 font-satoshi text-sm text-gray-500" id="prompt">{{ $prompt->prompt }}</p>
-    <a href={{ route('home.index', $prompt->tag) }} class="font-inter text-sm blue_gradient ">
+    <a href={{ '/prompts?search=' . $prompt->tag}} class="font-inter text-sm blue_gradient ">
         #{{ $prompt->tag }}
     </a>
     @auth

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/prompts/{tag?}', [HomeController::class, 'home'])->name('home.index');
+Route::get('/prompts', [HomeController::class, 'home'])->name('home.index');
 Route::get('/theirprofile/{user}', [HomeController::class, 'profiles'])->name('profiles.index');
 
 Route::get('/', function () {

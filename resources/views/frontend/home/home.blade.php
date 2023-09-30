@@ -16,11 +16,11 @@
         <section class="feed">
             <form class="relative w-full flex-center" id="searchForm">
                 <input type="text" name="search" value="{{ request('search') }}" class="search_input peer"
-                    placeholder="Search for tags or prompts" id="search" onkeyup="resetTimeout()" />
+                    placeholder="Search for tags or prompts" id="search" onkeyup="resetTimeout(event)" />
             </form>
-            @if ($tag)
+            {{-- @if ($tag)
                 <a class="green_gradient mt-8" href={{ route('home.index') }}>All Prompts</a>
-            @endif
+            @endif --}}
             <div class="prompt_layout">
                 @foreach ($prompts as $prompt)
                     <livewire:prompt-card :prompt='$prompt'>
@@ -49,13 +49,13 @@
             }, 600);
         }
 
-        function resetTimeout() {
+        function resetTimeout(e) {
+
             // Clear the existing timeout
             clearTimeout(timeoutId);
 
             // Start a new timeout
             startTimeout();
         }
-
     </script>
 @endsection
