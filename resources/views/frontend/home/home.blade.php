@@ -14,14 +14,28 @@
             </p>
         </section>
         <section class="feed">
+            <form class="relative w-full flex-center">
+                <input type="search" name="search" value="{{ request('search') }}" class="search_input peer"
+                    placeholder="Search for tags or prompts" id="search" autofocus/>
+            </form>
             @if ($tag)
-                <a class="green_gradient" href={{ route('home.index') }}>All Prompts</a>
+                <a class="green_gradient mt-8" href={{ route('home.index') }}>All Prompts</a>
             @endif
-            <div class="mt-10 prompt_layout">
+            <div class="prompt_layout">
                 @foreach ($prompts as $prompt)
                     <livewire:prompt-card :prompt='$prompt'>
                 @endforeach
             </div>
         </section>
     </section>
+
+    <script>
+        const input = document.getElementById('search');
+
+        // Set the cursor position to the end of the input value
+        input.setSelectionRange(input.value.length, input.value.length);
+
+        // Automatically focus the input
+        input.focus();
+    </script>
 @endsection

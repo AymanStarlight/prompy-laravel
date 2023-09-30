@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance:none;
+}
+
 .main {
 	width: 100vw;
 	min-height: 100vh;
@@ -64,7 +71,7 @@
 }
 
 .search_input {
-	@apply block w-full rounded-md border border-gray-200 bg-white py-2.5 font-satoshi pl-5 pr-12 text-sm shadow-lg font-medium  focus:outline-none focus:ring-0;
+	@apply block w-full rounded-md bg-white py-2.5 font-satoshi pl-5 pr-12 text-sm shadow-lg font-medium  outline-0 border-0 focus:ring-0;
 }
 
 .copy_btn {

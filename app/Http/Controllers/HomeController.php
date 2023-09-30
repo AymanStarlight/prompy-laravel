@@ -18,6 +18,8 @@ class HomeController extends Controller
                 $prompts = Prompt::all();
                 return redirect()->route('home.index')->with('warning', 'Tag not Found');
             }
+        } elseif (request('search')) {
+            $prompts = Prompt::where('tag', 'like', '%' . request('search') . '%')->orwhere('prompt', 'like', '%' . request('search') . '%')->get();
         } else {
             $prompts = Prompt::all();
         }
@@ -34,9 +36,10 @@ class HomeController extends Controller
         return view('frontend.profile.profile');
     }
 
-    public function profiles(User $user) {
+    public function profiles(User $user)
+    {
 
-        if((auth()->user()) && (auth()->user()->id === $user->id)) {
+        if ((auth()->user()) && (auth()->user()->id === $user->id)) {
             return redirect()->route('profile.index');
         }
 
